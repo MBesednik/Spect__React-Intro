@@ -1,0 +1,18 @@
+.Footer {
+  background: #333;
+  padding: 20px;
+
+  &-Copyright {
+    color: #d0d0d0;
+    text-align: center;
+    font-size: 12px;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 30px;
+
+    &-Copyright {
+      font-size: 14px;
+    }
+  }
+}
