@@ -45,4 +45,62 @@
       margin-bottom: 0;
     }
   }
+
+  @media screen and (min-width: 768px) {
+    &-Inner {
+      padding: 15px 25px;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    &-Inner {
+      padding: 15px 0;
+      max-width: 993px;
+      margin: 0 auto;
+    }
+
+    &-NavHamburger {
+      display: none;
+    }
+
+    &-Nav {
+      display: block;
+    }
+
+    &-NavItem {
+      display: inline-block;
+      text-decoration: none;
+      color: #000;
+      line-height: 50px;
+      font-weight: 600;
+      font-size: 16px;
+      margin: 15px 0;
+      margin-right: 60px;
+      transition: all 0.3s ease-out;
+
+      &:hover {
+        color: #d33e3e;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &_active {
+        color: #d33e3e;
+      }
+    }
+  }
+
+  @media screen and (min-width: 1300px) {
+    &-Inner {
+      max-width: 1280px;
+    }
+    &-LogoContainer {
+      width: 60px;
+    }
+    &-NavItem {
+      font-size: 18px;
+    }
+  }
 }
