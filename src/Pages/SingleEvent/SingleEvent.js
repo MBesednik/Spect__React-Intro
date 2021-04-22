@@ -4,7 +4,6 @@ import React from 'react';
 const SingleEvent = () => {
     return ( 
         <>
-
             <section className="Section SectionEvents">
                 <h1 className="Section-Title">UX/UI design workshop</h1>
             </section>

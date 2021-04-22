@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom";
 export default function Button() {
   const history = useHistory();
   function handleClick() {
-    history.push("/Event");
+    history.push("/event");
   }
   return (
     <button className="Button" type="button" onClick={handleClick}>
