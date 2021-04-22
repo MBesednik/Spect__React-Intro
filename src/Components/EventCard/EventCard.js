@@ -1,6 +1,6 @@
 import './EventCard.scss';
 import React from 'react';
-import Button from '../Button/Button'
+import Button from '../Button/Button';
 
 const EventCard = ({
     
@@ -37,7 +37,10 @@ const EventCard = ({
                     </div>
                 </div>
             </div>
-            <Button text="Find out more"/>
+            {/* <Link to="/SingleEvent">
+            <Button text="Find out more"></Button>
+            </Link> */}
+            <Button/>
         </div>
         </>
     );

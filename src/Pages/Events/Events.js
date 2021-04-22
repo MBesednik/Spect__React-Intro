@@ -1,10 +1,53 @@
 import './Events.scss';
 import React from 'react';
-import EventCard from '../../Components/EventCard/EventCard'
+import EventCard from '../../Components/EventCard/EventCard';
+import SingleEvent from '../SingleEvent/SingleEvent';
+
+import { Route } from 'react-router-dom';
+
 
 const Events = () => {
     return ( 
-        <section class="Section-Events">
+      <>
+      <h1 className="Section-Title">Events</h1>
+        <section className="Section-Events">
+          <Route path="/SingleEvent" component={SingleEvent}>
+            <EventCard
+                      title="UX/UI design workshop"
+                      location="Hodnik FOI-a"
+                      time="14.10. (9:00-16:00h)"
+                      freeSpace="15/60"
+                      firm="Speck"
+                    />
+                     </Route>
+            <EventCard
+                   title="UX/UI design workshop"
+                   location="Hodnik FOI-a"
+                   time="14.10. (9:00-16:00h)"
+                   freeSpace="15/60"
+                   firm="Speck"
+                    />
+            <EventCard
+                    title="UX/UI design workshop"
+                    location="Hodnik FOI-a"
+                    time="14.10. (9:00-16:00h)"
+                    freeSpace="15/60"
+                    firm="Speck"
+                    />
+            <EventCard
+                     title="UX/UI design workshop"
+                     location="Hodnik FOI-a"
+                     time="14.10. (9:00-16:00h)"
+                     freeSpace="15/60"
+                     firm="Speck"
+                    />
+            <EventCard
+                    title="UX/UI design workshop"
+                    location="Hodnik FOI-a"
+                    time="14.10. (9:00-16:00h)"
+                    freeSpace="15/60"
+                    firm="Speck"
+                    />
             <EventCard
                       title="UX/UI design workshop"
                       location="Hodnik FOI-a"
@@ -13,55 +56,21 @@ const Events = () => {
                       firm="Speck"
                     />
             <EventCard
-                      title="Frontend best practices"
-                      location="Hodnik FOI-a"
-                      time="15.10. (9:00-16:00h)"
-                      freeSpace="55/60"
-                      firm="Speck"
+                    title="UX/UI design workshop"
+                    location="Hodnik FOI-a"
+                    time="14.10. (9:00-16:00h)"
+                    freeSpace="15/60"
+                    firm="Speck"
                     />
             <EventCard
-                      title="Digital marketing workshop"
-                      location="Hodnik FOI-a"
-                      time="16.10. (9:00-16:00h)"
-                      freeSpace="28/60"
-                      firm="Speck"
-                    />
-            <EventCard
-                      title="Frontend best practices"
-                      location="Hodnik FOI-a"
-                      time="17.10. (9:00-16:00h)"
-                      freeSpace="50/60"
-                      firm="Speck"
-                    />
-            <EventCard
-                      title="Digital marketing workshop"
-                      location="Hodnik FOI-a"
-                      time="18.10. (9:00-16:00h)"
-                      freeSpace="20/60"
-                      firm="Speck"
-                    />
-            <EventCard
-                      title="UX/UI design workshop"
-                      location="Hodnik FOI-a"
-                      time="19.10. (9:00-16:00h)"
-                      freeSpace="28/60"
-                      firm="Speck"
-                    />
-            <EventCard
-                      title="Frontend best practices"
-                      location="Hodnik FOI-a"
-                      time="20.10. (9:00-16:00h)"
-                      freeSpace="52/60"
-                      firm="Speck"
-                    />
-            <EventCard
-                      title="UX/UI design workshop"
-                      location="Hodnik FOI-a"
-                      time="21.10. (9:00-16:00h)"
-                      freeSpace="38/60"
-                      firm="Speck"
+                     title="UX/UI design workshop"
+                     location="Hodnik FOI-a"
+                     time="14.10. (9:00-16:00h)"
+                     freeSpace="15/60"
+                     firm="Speck"
                     />
        </section>
+       </>
      );
 }
 

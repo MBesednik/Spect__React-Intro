@@ -1,7 +1,7 @@
 import React from 'react';
 import './Header.scss';
 import Logo from '../../assets/Images/logo.png';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 // import Home from '../../Pages/Home/Home';
 
 const links = {
@@ -9,13 +9,14 @@ const links = {
     events: 'Events',
 }
 
+
 const Header = () => {
     return (
 <header className="Header">
         <div className="Header-Inner">
-            <Link className="Header-LogoContainer" to="/">
+            <NavLink className="Header-LogoContainer" to="/">
                 <img src={Logo} className="Header-Logo" alt="Logo"/>
-                </Link>
+                </NavLink>
         
             <div className="Header-NavHamburger">
                     <div className="Header-NavHamburgerLine"></div>
@@ -23,8 +24,8 @@ const Header = () => {
                     <div className="Header-NavHamburgerLine"></div>
                 </div>
             <nav className="Header-Nav">
-                <Link className="Header-NavItem" to="/" >{links.home}</Link>
-                <Link className="Header-NavItem" to="/events" >{links.events}</Link>
+                <NavLink className="Header-NavItem " activeStyle={{color: "red"}} exact to="/" >{links.home}</NavLink>
+                <NavLink className="Header-NavItem " activeStyle={{color: "red"}} exact to="/events" >{links.events}</NavLink>
             </nav>
         </div>
     </header>

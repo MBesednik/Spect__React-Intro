@@ -1,21 +1,17 @@
 import './SingleEvent.scss';
 import React from 'react';
-import { Route } from 'react-router-dom';
-
-import ImageDevelopment from '../../assets/Images/development.jpg'
-
 
 const SingleEvent = () => {
     return ( 
         <>
-        <Route path="/event">
+
             <section className="Section SectionEvents">
-                <h1 className="Section-Title">Event page title</h1>
+                <h1 className="Section-Title">UX/UI design workshop</h1>
             </section>
             <section className="SectionEvent">
                 <div className="EventInfo">
                     <figure className="EventInfo-Figure">
-                        {ImageDevelopment}
+                        <img src={require("../../assets/Images/design.jpg").default} alt="Design" className="EventInfo-Image"/>
                     </figure>
                     <div className="EventInfo-Content">
                         <div className="EventInfo-ContentRow">
@@ -24,18 +20,18 @@ const SingleEvent = () => {
                                 <p className="EventInfo-ItemTitleValue">Hodnik FOI-a</p>
                             </div>
                             <div className="EventInfo-ItemTitle">
-                                <h3 className="EventInfo-ItemTitle">Lokacija</h3>
-                                <p className="EventInfo-ItemTitleValue">Hodnik FOI-a</p>
+                                <h3 className="EventInfo-ItemTitle">Datum i vrijeme</h3>
+                                <p className="EventInfo-ItemTitleValue">14.10. (9:00-16:00h)</p>
                             </div>
                         </div>
                         <div className="EventInfo-ContentRow">
                             <div className="EventInfo-ItemTitle">
-                                <h3 className="EventInfo-ItemTitle">Lokacija</h3>
-                                <p className="EventInfo-ItemTitleValue">Hodnik FOI-a</p>
+                                <h3 className="EventInfo-ItemTitle">Slobodna mjesta</h3>
+                                <p className="EventInfo-ItemTitleValue">15/60</p>
                             </div>
                             <div className="EventInfo-ItemTitle">
-                                <h3 className="EventInfo-ItemTitle">Lokacija</h3>
-                                <p className="EventInfo-ItemTitleValue">Hodnik FOI-a</p>
+                                <h3 className="EventInfo-ItemTitle">Firma</h3>
+                                <p className="EventInfo-ItemTitleValue">Speck</p>
                             </div>
                         </div>
                         <button className="Button">Prijavi se</button>
@@ -49,7 +45,6 @@ const SingleEvent = () => {
                     nihil ipsa necessitatibus debitis quibusdam? Optio, dolor?
                 </p>
             </section>
-          </Route>
         </>
      );
 }
