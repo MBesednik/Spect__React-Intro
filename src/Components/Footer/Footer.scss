@@ -1,14 +1,17 @@
+@import "../Theme/Theme.scss";
+@use "../Theme/Theme.scss";
+
 .Footer {
-  background: #333;
+  background: $black;
   padding: 20px;
 
   &-Copyright {
-    color: #d0d0d0;
+    color: $lightGrey;
     text-align: center;
     font-size: 12px;
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and ($tablet) {
     padding: 30px;
 
     &-Copyright {
