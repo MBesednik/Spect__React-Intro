@@ -69,6 +69,13 @@ const Events = () => {
                      freeSpace="15/60"
                      firm="Speck"
                     />
+            <EventCard
+                     title="UX/UI design workshop"
+                     location="Hodnik FOI-a"
+                     time="14.10. (9:00-16:00h)"
+                     freeSpace="15/60"
+                     firm="Speck"
+                    />
        </section>
        </>
      );
