@@ -1,3 +1,6 @@
+@import "../../Components/Theme/Theme.scss";
+@use "../../Components/Theme/Theme.scss";
+
 .Section {
   padding: 80px 0;
   max-width: 1280px;
@@ -64,13 +67,13 @@
   }
 }
 
-@media screen and (min-width: 500px) {
+@media screen and ($mobileLarge) {
   .EventInfo-Figure {
     height: 300px;
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and ($tablet) {
   .SectionEvent {
     padding: 0 25px 65px;
   }
@@ -98,7 +101,7 @@
   }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and ($desktop) {
   .SectionEvent {
     margin: 0 auto;
     padding: 0 0 64px;
@@ -126,7 +129,7 @@
   }
 }
 
-@media screen and (min-width: 1300px) {
+@media screen and ($desktopLarge) {
   .SectionEvent {
     max-width: 1280px;
   }
@@ -141,7 +144,3 @@
     width: 800px;
   }
 }
-
-// figure {
-//   background-image: url("../../assets/Images/design.jpg");
-// }
