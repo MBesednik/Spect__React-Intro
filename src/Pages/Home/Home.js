@@ -1,15 +1,15 @@
 import React from 'react';
 import './Home.scss';
 
-import Hero from '../../Components/Hero/Hero';
-import Section from '../../Components/Section/Section';
-import Grid from '../../Components/Grid/Grid';
-import Event from '../../Components/Event/Event';
+import Hero from '../../components/Hero/Hero';
+import Section from '../../components/Section/Section';
+import Grid from '../../components/Grid/Grid';
+import Event from '../../components/Event/Event';
 
 //images
-import ImageDesign from '../../assets/Images/design.jpg';
-import ImageDevelopment from '../../assets/Images/development.jpg';
-import ImageMarketing from '../../assets/Images/marketing.jpg';
+import ImageDesign from '../../assets/images/design.jpg';
+import ImageDevelopment from '../../assets/images/development.jpg';
+import ImageMarketing from '../../assets/images/marketing.jpg';
 
 
 const Home = () => {

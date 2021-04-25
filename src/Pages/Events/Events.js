@@ -1,6 +1,6 @@
 import './Events.scss';
 import React from 'react';
-import EventCard from '../../Components/EventCard/EventCard';
+import EventCard from '../../components/EventCard/EventCard';
 import SingleEvent from '../SingleEvent/SingleEvent';
 
 import { Route } from 'react-router-dom';
