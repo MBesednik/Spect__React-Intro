@@ -1,6 +1,6 @@
 import React from 'react';
 import './Header.scss';
-import Logo from '../../assets/Images/logo.png';
+import Logo from '../../assets/images/logo.png';
 import { NavLink } from 'react-router-dom';
 // import Home from '../../Pages/Home/Home';
 

@@ -1,10 +1,13 @@
+@import "../../components/Theme/Theme.scss";
+@use "../../components/Theme/Theme.scss";
+
 .Section-Events {
   display: grid;
   padding: 64px 15px;
   row-gap: 48px;
 }
 
-@media screen and (min-width: 576px) {
+@media screen and ($mobileLarge) {
   .Section-Events {
     grid-template-columns: repeat(2, 1fr);
     gap: 32px;
@@ -12,7 +15,7 @@
   }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and ($desktop) {
   .Section-Events {
     grid-template-columns: repeat(3, 1fr);
     padding: 80px 0;
@@ -21,7 +24,7 @@
   }
 }
 
-@media screen and (min-width: 1300px) {
+@media screen and ($desktopLarge) {
   .Section-Events {
     grid-template-columns: repeat(4, 1fr);
     max-width: 1280px;

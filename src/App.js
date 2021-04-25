@@ -1,10 +1,10 @@
 import './App.scss';
-import Header from './Components/Header/Header';
-import Main from './Components/Main/Main';
-import Home from './Pages/Home/Home';
-import Events from './Pages/Events/Events';
-import Event from './Pages/SingleEvent/SingleEvent';
-import Footer from './Components/Footer/Footer';
+import Header from './components/Header/Header';
+import Main from './components/Main/Main';
+import Home from './pages/Home/Home';
+import Events from './pages/Events/Events';
+import Event from './pages/SingleEvent/SingleEvent';
+import Footer from './components/Footer/Footer';
 import { Route } from 'react-router-dom';
 
 export default function App() {

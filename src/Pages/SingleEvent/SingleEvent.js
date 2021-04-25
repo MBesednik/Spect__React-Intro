@@ -10,7 +10,7 @@ const SingleEvent = () => {
             <section className="SectionEvent">
                 <div className="EventInfo">
                     <figure className="EventInfo-Figure">
-                        <img src={require("../../assets/Images/design.jpg").default} alt="Design" className="EventInfo-Image"/>
+                        <img src={require("../../assets/images/design.jpg").default} alt="Design" className="EventInfo-Image"/>
                     </figure>
                     <div className="EventInfo-Content">
                         <div className="EventInfo-ContentRow">
