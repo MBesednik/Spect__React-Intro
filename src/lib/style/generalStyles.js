@@ -5,6 +5,7 @@ import {
     transitionEase
 } from "../../lib/style/theme";
 
+// Grid
 export const Grid = styled.div`
   display: grid;
   row-gap: 32px;
@@ -24,4 +25,30 @@ export const Grid = styled.div`
        'padding: 0 84px;'
        }
 }
+`;
+
+// Button
+export const Button = styled.button `
+ display: block;
+  text-decoration: none;
+  width: 100%;
+  line-height: 40px;
+  text-align: center;
+  border: 1px solid ${colors.red};
+  border-radius: 6px;
+  background: ${colors.red};
+  color: ${colors.white};
+  transition: ${transitionEase};
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+  
+  &:hover {
+    cursor: pointer;
+    border-color: ${colors.yellow};
+    background: ${colors.yellow};
+  }
+  
+  &:focus {
+    outline: none;
+  }
 `;

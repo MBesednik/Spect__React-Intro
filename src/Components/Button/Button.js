@@ -1,6 +1,6 @@
 import React from 'react';
-import './Button.scss';
 import { useHistory } from "react-router-dom";
+import { Button as ButtonStyle} from '../../lib/style/generalStyles';
 
 
 
@@ -10,9 +10,9 @@ export default function Button() {
     history.push("/event");
   }
   return (
-    <button className="Button" type="button" onClick={handleClick}>
+    <ButtonStyle onClick={handleClick}>
       Find out more
-    </button>
+    </ButtonStyle>
   );
 }
 
