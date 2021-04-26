@@ -1,5 +1,6 @@
 import './SingleEvent.scss';
 import React from 'react';
+import { ButtonStyle } from '../../lib/style/generalStyles'
 
 const SingleEvent = () => {
     return ( 
@@ -33,7 +34,7 @@ const SingleEvent = () => {
                                 <p className="EventInfo-ItemTitleValue">Speck</p>
                             </div>
                         </div>
-                        <button className="Button">Prijavi se</button>
+                        <ButtonStyle>Prijavi se</ButtonStyle>
                     </div>
                 </div>
                 <p className="EventInfo-Description">

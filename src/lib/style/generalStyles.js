@@ -1,4 +1,6 @@
+import React from 'react';
 import styled from "styled-components";
+import { useHistory } from "react-router-dom";
 import {
     colors,
     breakpoints,
@@ -27,8 +29,28 @@ export const Grid = styled.div`
 }
 `;
 
+export const Main = (props) => {
+  return (
+      <main>
+          {props.children}
+      </main>
+  );
+}
+
 // Button
-export const Button = styled.button `
+export default function Button() {
+  const history = useHistory();
+  function handleClick() {
+    history.push("/event");
+  }
+  return (
+    <ButtonStyle onClick={handleClick}>
+      Find out more
+    </ButtonStyle>
+  );
+}
+
+export const ButtonStyle = styled.button `
  display: block;
   text-decoration: none;
   width: 100%;
