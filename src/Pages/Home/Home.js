@@ -3,7 +3,7 @@ import './Home.scss';
 
 import Hero from '../../components/Hero/Hero';
 import Section from '../../components/Section/Section';
-import Grid from '../../components/Grid/Grid';
+import { Grid } from '../../lib/style/generalStyles';
 import Event from '../../components/Event/Event';
 
 //images
@@ -17,7 +17,7 @@ const Home = () => {
         <>
          <Hero/>
         <Section title="Featured events">
-          <Grid columns="3">
+          <Grid columns={3}>
           <Event 
                         image={ImageDesign}
                         title="UX/UI design workshop"

@@ -1,8 +1,15 @@
 import React from 'react';
-import './Header.scss';
-import Logo from '../../assets/images/logo.png';
-import { NavLink } from 'react-router-dom';
-// import Home from '../../Pages/Home/Home';
+import LogoImg from '../../assets/images/logo.png';
+import {
+    HeaderWrapper,
+    Inner,
+    Logo,
+    LogoContainer,
+    Nav,
+    NavItem,
+    Hamburger,
+    HamburgerLine
+} from "./HeaderStyle";
 
 const links = {
     home: 'Home',
@@ -12,23 +19,23 @@ const links = {
 
 const Header = () => {
     return (
-<header className="Header">
-        <div className="Header-Inner">
-            <NavLink className="Header-LogoContainer" to="/">
-                <img src={Logo} className="Header-Logo" alt="Logo"/>
-                </NavLink>
+<HeaderWrapper>
+        <Inner>
+            <LogoContainer to="/">
+                <Logo src={LogoImg} alt="Logo"/>
+                </LogoContainer>
         
-            <div className="Header-NavHamburger">
-                    <div className="Header-NavHamburgerLine"></div>
-                    <div className="Header-NavHamburgerLine"></div>
-                    <div className="Header-NavHamburgerLine"></div>
-                </div>
-            <nav className="Header-Nav">
-                <NavLink className="Header-NavItem " activeStyle={{color: "red"}} exact to="/" >{links.home}</NavLink>
-                <NavLink className="Header-NavItem " activeStyle={{color: "red"}} exact to="/events" >{links.events}</NavLink>
-            </nav>
-        </div>
-    </header>
+            <Hamburger>
+                    <HamburgerLine/>
+                    <HamburgerLine/>
+                    <HamburgerLine/>
+                </Hamburger>
+            <Nav>
+                <NavItem activeStyle={{color: "red"}} exact to="/" >{links.home}</NavItem>
+                <NavItem activeStyle={{color: "red"}} exact to="/events" >{links.events}</NavItem>
+            </Nav>
+        </Inner>
+        </HeaderWrapper>
     );
 }
 
