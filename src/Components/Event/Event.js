@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import eventsMock from '../../lib/mock/events';
 import Button from '../../lib/style/generalStyles';
 import {
     Event as EventWrapper,
@@ -12,16 +13,18 @@ const Event = ({
     image,
     title,
     description,
-    buttonText
+    imgAlt,
+    buttonText,
+    route
 }) => {
     return (
         <EventWrapper>
             <Figure>
-                <Image src={image} alt="Design" />
+                <Image src={image} alt= {imgAlt} />
             </Figure>
             <Title>{title}</Title>
             <Description>{description}</Description>
-            <Button text={buttonText}/>
+            <Button text={buttonText} route={route}/>
         </EventWrapper>
     );
 }

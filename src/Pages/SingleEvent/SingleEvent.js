@@ -1,8 +1,20 @@
+import React, { useState, useEffect } from 'react';
+import eventsMock from '../../lib/mock/events';
 import './SingleEvent.scss';
-import React from 'react';
 import { ButtonStyle } from '../../lib/style/generalStyles'
 
-const SingleEvent = () => {
+const SingleEvent = (props) => {
+    const routeEventId = parseInt(props.match.params.id);
+    const [events, setEvents] = useState(null);
+    const [event, setEvent] = useState(null);
+
+    useEffect(() => {
+        setEvents(eventsMock);
+    }, []);
+    useEffect(() => {
+        events && setEvent(...events.filter(event => event.id === routeEventId));
+    }, [events]);
+
     return ( 
         <>
             <section className="Section SectionEvents">

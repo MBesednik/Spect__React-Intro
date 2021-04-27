@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import {
     colors,
@@ -29,6 +31,7 @@ export const Grid = styled.div`
 }
 `;
 
+// Main
 export const Main = (props) => {
   return (
       <main>
@@ -41,7 +44,7 @@ export const Main = (props) => {
 export default function Button() {
   const history = useHistory();
   function handleClick() {
-    history.push("/event");
+    history.push("/event.id");
   }
   return (
     <ButtonStyle onClick={handleClick}>
@@ -74,3 +77,14 @@ export const ButtonStyle = styled.button `
     outline: none;
   }
 `;
+
+// Scroll to top
+export function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}

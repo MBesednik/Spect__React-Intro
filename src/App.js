@@ -14,7 +14,7 @@ export default function App() {
       <Main>
         <Route exact path="/" component={Home} />
         <Route exact path="/Events" component={Events} />
-        <Route exact path="/Event" component={Event} />
+        <Route exact path="/Event/:id" component={Event} />
       </Main>
       <Footer/>
     </>
