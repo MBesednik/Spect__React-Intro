@@ -1,6 +1,14 @@
-import './EventCard.scss';
 import React from 'react';
 import Button from '../../lib/style/generalStyles';
+import {
+    EventCard as EventCardStyle,
+    Title,
+    Content,
+    ContentRow,
+    Item,
+    ItemTitle,
+    ItemValue
+} from './EventCardStyle';
 
 const EventCard = ({
     
@@ -13,32 +21,32 @@ const EventCard = ({
 }) => {
     return (  
         <>
-          <div className="EventCard">
-            <h2 className="EventCard-Title">{title}</h2>
-            <div className="EventCard-Content">
-                <div className="EventCard-ContentRow">
-                    <div className="EventCard-Item">
-                        <h3 className="EventCard-ItemTitle">Lokacija</h3>
-                        <p className="EventCard-ItemValue">{location}</p>
-                    </div>
-                    <div className="EventCard-Item">
-                        <h3 className="EventCard-ItemTitle">Datum i vrijeme</h3>
-                        <p className="EventCard-ItemValue">{time}</p>
-                    </div>
-                </div>
-                <div className="EventCard-ContentRow">
-                    <div className="EventCard-Item">
-                        <h3 className="EventCard-ItemTitle">Slobodna mjesta</h3>
-                        <p className="EventCard-ItemValue">{freeSpace}</p>
-                    </div>
-                    <div className="EventCard-Item">
-                        <h3 className="EventCard-ItemTitle">Firma</h3>
-                        <p className="EventCard-ItemValue">{firm}</p>
-                    </div>
-                </div>
-            </div>
+          <EventCardStyle>
+            <Title>{title}</Title>
+            <Content>
+                <ContentRow>
+                    <Item>
+                        <ItemTitle>Lokacija</ItemTitle>
+                        <ItemValue>{location}</ItemValue>
+                    </Item>
+                    <Item>
+                        <ItemTitle>Datum i vrijeme</ItemTitle>
+                        <ItemValue>{time}</ItemValue>
+                    </Item>
+                </ContentRow>
+                <ContentRow>
+                    <Item>
+                        <ItemTitle>Slobodna mjesta</ItemTitle>
+                        <ItemValue>{freeSpace}</ItemValue>
+                    </Item>
+                    <Item>
+                        <ItemTitle>Firma</ItemTitle>
+                        <ItemValue>{firm}</ItemValue>
+                    </Item>
+                </ContentRow>
+            </Content>
             <Button/>
-        </div>
+        </EventCardStyle>
         </>
     );
 }
