@@ -44,7 +44,7 @@ export const Main = (props) => {
 export default function Button() {
   const history = useHistory();
   function handleClick() {
-    history.push("/event.id");
+    history.push("/event");
   }
   return (
     <ButtonStyle onClick={handleClick}>

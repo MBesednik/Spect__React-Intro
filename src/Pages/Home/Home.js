@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import eventsMock from '../../lib/mock/events';
-import './Home.scss';
+import {} from './HomeStyle';
 import Hero from '../../components/Hero/Hero';
 import Section from '../../components/Section/Section';
 import { Grid } from '../../lib/style/generalStyles';
@@ -32,7 +32,6 @@ const Home = () => {
                         description={event.shortDescription}
                         imgAlt={event.imageAlt}
                         buttonText="Find out more"
-                        route={`/Event/${event.id}`}
                     />
                     )
                 }

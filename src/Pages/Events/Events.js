@@ -1,16 +1,17 @@
-import './Events.scss';
 import React from 'react';
 import EventCard from '../../components/EventCard/EventCard';
 import SingleEvent from '../SingleEvent/SingleEvent';
-
 import { Route } from 'react-router-dom';
-
+import {
+        SectionTitle,
+        SectionEvents
+} from './EventsStyle';
 
 const Events = () => {
     return ( 
       <>
-      <h1 className="Section-Title">Events</h1>
-        <section className="Section-Events">
+      <SectionTitle>Events</SectionTitle>
+        <SectionEvents>
           <Route path="/SingleEvent" component={SingleEvent}>
             <EventCard
                       title="UX/UI design workshop"
@@ -69,7 +70,7 @@ const Events = () => {
                      freeSpace="15/60"
                      firm="Speck"
                     />
-       </section>
+       </SectionEvents>
        </>
      );
 }
