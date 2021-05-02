@@ -5,22 +5,34 @@ import Hero from '../../components/Hero/Hero';
 import Section from '../../components/Section/Section';
 import { Grid } from '../../lib/style/generalStyles';
 import Event from '../../components/Event/Event';
+import Loader from "react-loader-spinner";
+import { findByLabelText } from '@testing-library/dom';
+
 
 
 const Home = () => {
 
-    const [events, setEvents] = useState(null);
+      const style = {textAlign: 'center'};
+      const [events, setEvents] = useState(null);
 
     useEffect(() => {
         setTimeout(() => {
             setEvents(eventsMock);
-        }, 1000);
+        }, 1500);
     }, [events]);
 
     return (
         <>
          <Hero/>
+      
         <Section title="Featured events">
+          <Loader style={style}
+          type="TailSpin"
+          color="#e4b43c"
+          height={150}
+          width={150}
+          timeout={1500}
+          />
           {events && 
 
           <Grid columns={3}>

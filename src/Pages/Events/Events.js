@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect} from 'react';
+import eventsMock from '../../lib/mock/events';
 import EventCard from '../../components/EventCard/EventCard';
 import SingleEvent from '../SingleEvent/SingleEvent';
 import { Route } from 'react-router-dom';
@@ -6,12 +7,33 @@ import {
         SectionTitle,
         SectionEvents
 } from './EventsStyle';
+import Loader from "react-loader-spinner";
+
+
 
 const Events = () => {
+
+    const style = { position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)" };
+    const [events, setEvents] = useState(null);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setEvents(eventsMock);
+        }, 1500);
+    }, [events]);
     return ( 
       <>
       <SectionTitle>Events</SectionTitle>
-        <SectionEvents>
+        <SectionEvents >
+        <Loader style = {style}
+          type="TailSpin"
+          color="#e4b43c"
+          height={150}
+          width={150}
+          timeout={1500}
+          />
+             {events && 
+             <>
           <Route path="/SingleEvent" component={SingleEvent}>
             <EventCard
                       title="UX/UI design workshop"
@@ -70,6 +92,8 @@ const Events = () => {
                      freeSpace="15/60"
                      firm="Speck"
                     />
+                    </> 
+                    }
        </SectionEvents>
        </>
      );
