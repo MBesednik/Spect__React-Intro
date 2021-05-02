@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from "styled-components";
-import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import {
@@ -8,6 +7,17 @@ import {
     breakpoints,
     transitionEase
 } from "../../lib/style/theme";
+
+// Scroll to top
+export function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 
 // Grid
 export const Grid = styled.div`
@@ -77,14 +87,3 @@ export const ButtonStyle = styled.button `
     outline: none;
   }
 `;
-
-// Scroll to top
-export function ScrollToTop() {
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-
-  return null;
-}

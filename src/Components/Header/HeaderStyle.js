@@ -79,19 +79,3 @@ export const NavItem = styled(NavLink)`
         font-size: 18px;
     }
 `;
-export const Hamburger = styled.div`
-    width: 25px;
-    @media screen and (${breakpoints.desktop}) {
-        display: none;
-    }
-`;
-export const HamburgerLine = styled.div`    
-    width: 100%;
-    height: 2px;
-    border-radius: 100px;
-    background-color: ${colors.darkGrey};
-    margin-bottom: 6px;
-    &:last-child {
-        margin-bottom: 0;
-    }
-`;
