@@ -6,7 +6,6 @@ import Section from '../../components/Section/Section';
 import { Grid } from '../../lib/style/generalStyles';
 import Event from '../../components/Event/Event';
 import Loader from "react-loader-spinner";
-import { findByLabelText } from '@testing-library/dom';
 
 
 
@@ -26,14 +25,8 @@ const Home = () => {
          <Hero/>
       
         <Section title="Featured events">
-          <Loader style={style}
-          type="TailSpin"
-          color="#e4b43c"
-          height={150}
-          width={150}
-          timeout={1500}
-          />
-          {events && 
+ 
+          {events ? ( 
 
           <Grid columns={3}>
           {events.map(event => event.isFeatured &&
@@ -44,11 +37,21 @@ const Home = () => {
                         description={event.shortDescription}
                         imgAlt={event.imageAlt}
                         buttonText="Find out more"
+                        eventId={event.id}
+                        route={`/event/${event.id}`}
                     />
                     )
                 }
             </Grid>
-          }
+          ) : (
+         <Loader style={style}
+          type="TailSpin"
+          color="#e4b43c"
+          height={150}
+          width={150}
+          timeout={1000}
+          />
+          )}
         </Section>
         </>
       );

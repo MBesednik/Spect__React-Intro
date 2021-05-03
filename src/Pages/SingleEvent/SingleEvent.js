@@ -1,78 +1,61 @@
 import React, { useState, useEffect } from 'react';
 import eventsMock from '../../lib/mock/events';
-import { ButtonStyle } from '../../lib/style/generalStyles';
+
+// style
 import {
-    Section,
-    Title,
-    SectionEvents,
-    Event,
-    EventInfo,
-    Figure,
-    Image,
-    Content,
-    ContentRow,
-    Item,
-    ItemTitle,
-    ItemValue,
-    Description
-} from './SingleEventStyle';
+  SectionEvent,
+  Title,
+  EventInfoWrapper,
+  Figure,
+  Image,
+  Content,
+  Description,
+} from '../../components/SingleEventInfo/SingleEventInfoStyle';
 
-const SingleEvent = (props) => {
-    // const routeEventId = parseInt(props.match.params.id);
-    // const [events, setEvents] = useState(null);
-    // const [event, setEvent] = useState(null);
+// components
+import SingleEventInfo from '../../components/SingleEventInfo/SingleEventInfo';
 
-    // useEffect(() => {
-    //     setEvents(eventsMock);
-    // }, []);
-    // useEffect(() => {
-    //     events && setEvent(...events.filter(event => event.id === routeEventId));
-    // }, [events]);
+const Event = props => {
+  const routeEventId = parseInt(props.match.params.id);
+  const [events, setEvents] = useState(null);
+  const [event, setEvent] = useState(null);
 
-    return ( 
+  useEffect(() => {
+    setEvents(eventsMock);
+  }, []);
+
+  useEffect(() => {
+    events && setEvent(...events.filter(event => event.id === routeEventId));
+  }, [events, routeEventId]);
+
+  return (
+    <>
+      {event && (
         <>
-            <Section>
-                <Title>UX/UI design workshop</Title>
-            </Section>
-            <Event>
-                <EventInfo>
-                    <Figure>
-                        <Image src={require("../../assets/images/design.jpg").default} alt="Design" className="EventInfo-Image" />
-                    </Figure>
-                    <Content>
-                        <ContentRow>
-                            <Item>
-                                <ItemTitle>Lokacija</ItemTitle>
-                                <ItemValue>Hodnik FOI-a</ItemValue>
-                            </Item>
-                            <Item>
-                                <ItemTitle>Datum i vrijeme</ItemTitle>
-                                <ItemValue>14.10. (9:00-16:00h)</ItemValue>
-                            </Item>
-                        </ContentRow>
-                        <ContentRow>
-                            <Item>
-                                <ItemTitle>Slobodna mjesta</ItemTitle>
-                                <ItemValue>15/60</ItemValue>
-                            </Item>
-                            <Item>
-                                <ItemTitle>Firma</ItemTitle>
-                                <ItemValue>Speck</ItemValue>
-                            </Item>
-                        </ContentRow>
-                        <ButtonStyle>Prijavi se</ButtonStyle>
-                    </Content>
-                </EventInfo>
-                <Description>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque sint laborum quibusdam quisquam, fugiat
-                    cumque dignissimos quasi. Corrupti dignissimos commodi ad sint aliquam. Ipsum doloremque, eum commodi
-                    dolor voluptatibus blanditiis? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nobis
-                    reiciendis error animi quae dolorum officiis suscipit iusto quos facere temporibus libero a, labore
-                    nihil ipsa necessitatibus debitis quibusdam? Optio, dolor?
-                </Description>
-            </Event>
+          <SectionEvent>
+            <Title>{event && event.title}</Title>
+            <EventInfoWrapper>
+              <Figure>
+                <Image src={event.imageUrl} alt={event.imageAlt} />
+              </Figure>
+              <Content>
+                <SingleEventInfo
+                  location={event.location}
+                  date={event.dateTime}
+                  freeSpots={event.availability}
+                  firm={event.company}
+                  hasButton={true}
+                  route='/event'
+                  buttonText='Prijavi se'
+                />
+              </Content>
+            </EventInfoWrapper>
+            <Description>{event.description}</Description>
+          </SectionEvent>
         </>
-     );
-}
- 
-export default SingleEvent;
+      )}
+    </>
+  );
+};
+
+export default Event;

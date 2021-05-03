@@ -1,105 +1,76 @@
 import React, { useState, useEffect} from 'react';
-import eventsMock from '../../lib/mock/events';
-import EventCard from '../../components/EventCard/EventCard';
-import SingleEvent from '../SingleEvent/SingleEvent';
-import { Route } from 'react-router-dom';
-import {
-        SectionTitle,
-        SectionEvents
-} from './EventsStyle';
-import Loader from "react-loader-spinner";
 
+// components
+import EventCard from '../../components/EventCard/EventCard';
+import Loader from "react-loader-spinner";
+import SearchBar from '../../components/SearchBar/SearchBar';
+import Section from '../../components/Section/Section';
+
+// file's from lib
+import { Grid } from '../../lib/style/generalStyles';
+import eventsMock from '../../lib/mock/events';
 
 
 const Events = () => {
 
     const style = { position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)" };
     const [events, setEvents] = useState(null);
+    const [filtered, setFiltered] = useState(null);
+
 
     useEffect(() => {
         setTimeout(() => {
             setEvents(eventsMock);
-        }, 1500);
-    }, [events]);
+            setFiltered(eventsMock);
+        }, 1000);
+    }, []);
+
+    const handleSearch = value => {
+        const filteredResult = filtered.filter(event =>
+          event.title.toLowerCase().includes(value.toLowerCase())
+        );
+        setEvents(filteredResult);
+      };
     return ( 
-      <>
-      <SectionTitle>Events</SectionTitle>
-        <SectionEvents >
-        <Loader style = {style}
+        <>
+        <Section title='Events' withoutTopPadding>
+          <SearchBar
+            placeholder='Search event by title...'
+            disabled={events ? false : true}
+            onValueChange={handleSearch}
+          />
+          {events ? (
+            <Grid columns={4}>
+              {events &&
+                events.map(event => {
+                  return (
+                    <EventCard
+                      key={event.id}
+                      title={event.title}
+                      location={event.location}
+                      time={event.dateTime}
+                      freeSpots={event.availablity}
+                      firm={event.company}
+                      eventId={event.id}
+                    />
+                  );
+                })}
+            </Grid>
+          ) : (
+                <Loader style = {style}
           type="TailSpin"
           color="#e4b43c"
           height={150}
           width={150}
           timeout={1500}
           />
-             {events && 
-             <>
-          <Route path="/SingleEvent" component={SingleEvent}>
-            <EventCard
-                      title="UX/UI design workshop"
-                      location="Hodnik FOI-a"
-                      time="14.10. (9:00-16:00h)"
-                      freeSpace="15/60"
-                      firm="Speck"
-                    />
-                     </Route>
-            <EventCard
-                   title="UX/UI design workshop"
-                   location="Hodnik FOI-a"
-                   time="14.10. (9:00-16:00h)"
-                   freeSpace="15/60"
-                   firm="Speck"
-                    />
-            <EventCard
-                    title="UX/UI design workshop"
-                    location="Hodnik FOI-a"
-                    time="14.10. (9:00-16:00h)"
-                    freeSpace="15/60"
-                    firm="Speck"
-                    />
-            <EventCard
-                     title="UX/UI design workshop"
-                     location="Hodnik FOI-a"
-                     time="14.10. (9:00-16:00h)"
-                     freeSpace="15/60"
-                     firm="Speck"
-                    />
-            <EventCard
-                    title="UX/UI design workshop"
-                    location="Hodnik FOI-a"
-                    time="14.10. (9:00-16:00h)"
-                    freeSpace="15/60"
-                    firm="Speck"
-                    />
-            <EventCard
-                      title="UX/UI design workshop"
-                      location="Hodnik FOI-a"
-                      time="14.10. (9:00-16:00h)"
-                      freeSpace="15/60"
-                      firm="Speck"
-                    />
-            <EventCard
-                    title="UX/UI design workshop"
-                    location="Hodnik FOI-a"
-                    time="14.10. (9:00-16:00h)"
-                    freeSpace="15/60"
-                    firm="Speck"
-                    />
-            <EventCard
-                     title="UX/UI design workshop"
-                     location="Hodnik FOI-a"
-                     time="14.10. (9:00-16:00h)"
-                     freeSpace="15/60"
-                     firm="Speck"
-                    />
-                    </> 
-                    }
-       </SectionEvents>
-       </>
-     );
-}
-
-export default Events;
+          )}
+        </Section>
+      </>
+    );
+  };
+export default Events; 
+ 
 
 // const Events = () => {
 //     return ( 

@@ -13,8 +13,8 @@ export default function App() {
       <Header/>
       <Main>
         <Route exact path="/" component={Home} />
-        <Route exact path="/Events" component={Events} />
-        <Route exact path="/Event" component={Event} />
+        <Route exact path="/events" component={Events} />
+        <Route exact path="/event/:id" component={Event} />
       </Main>
       <Footer/>
     </>

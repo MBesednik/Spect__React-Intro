@@ -1,5 +1,7 @@
 import React from 'react';
-import Button from '../../lib/style/generalStyles';
+import { useHistory } from 'react-router';
+
+import { Button } from '../../lib/style/generalStyles';
 import {
     EventCard as EventCardStyle,
     Title,
@@ -16,9 +18,11 @@ const EventCard = ({
     location,
     time,
     freeSpace,
-    firm
+    firm,
+    eventId
 
 }) => {
+    const history = useHistory();
     return (  
         <>
           <EventCardStyle>
@@ -45,7 +49,10 @@ const EventCard = ({
                     </Item>
                 </ContentRow>
             </Content>
-            <Button/>
+            <Button   
+            onClick={() => history.push(`/event/${eventId}`)}
+            text='Find out more' 
+            />
         </EventCardStyle>
         </>
     );

@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import eventsMock from '../../lib/mock/events';
-import Button from '../../lib/style/generalStyles';
+import React from 'react';
+import { Button } from '../../lib/style/generalStyles';
+import { useHistory } from 'react-router';
+
 import {
     Event as EventWrapper,
     Figure,
@@ -15,8 +16,9 @@ const Event = ({
     description,
     imgAlt,
     buttonText,
-    route
+    eventId
 }) => {
+    const history = useHistory();
     return (
         <EventWrapper>
             <Figure>
@@ -24,7 +26,10 @@ const Event = ({
             </Figure>
             <Title>{title}</Title>
             <Description>{description}</Description>
-            <Button text={buttonText} route={route}/>
+            <Button
+            onClick={() => history.push(`/event/${eventId}`)}
+            text={buttonText}
+      />
         </EventWrapper>
     );
 }
