@@ -4,9 +4,19 @@ import React from 'react';
 import { Button } from '../../lib/style/generalStyles';
 
 // style
-import { ContentRow, Item, ItemTitle, ItemValue } from './SingleEventInfoStyle';
+import { 
+  ContentRow,
+  Item, 
+  ItemTitle, 
+  ItemValue 
+  } from './SingleEventInfoStyle';
 
-const EventInfo = ({ location, date, freeSpots, firm }) => {
+const EventInfo = ({
+  location,
+  time,
+  freeSpots,
+  firm
+     }) => {
   return (
     <>
       <ContentRow>
@@ -16,7 +26,7 @@ const EventInfo = ({ location, date, freeSpots, firm }) => {
         </Item>
         <Item>
           <ItemTitle>Datum i vrijeme</ItemTitle>
-          <ItemValue>{date}</ItemValue>
+          <ItemValue>{time}</ItemValue>
         </Item>
       </ContentRow>
       <ContentRow>

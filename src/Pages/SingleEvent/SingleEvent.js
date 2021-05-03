@@ -41,7 +41,7 @@ const Event = props => {
               <Content>
                 <SingleEventInfo
                   location={event.location}
-                  date={event.dateTime}
+                  time={event.dateTime}
                   freeSpots={event.availability}
                   firm={event.company}
                   hasButton={true}
