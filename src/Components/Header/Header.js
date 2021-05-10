@@ -15,6 +15,8 @@ import Menu from '../Menu/Menu';
 const links = {
     home: 'Home',
     events: 'Events',
+    login: 'Login',
+    register: 'Register'
 }
 
 
@@ -31,6 +33,8 @@ const Header = () => {
             <Nav>
                 <NavItem activeStyle={{color: "red"}} exact to="/" >{links.home}</NavItem>
                 <NavItem activeStyle={{color: "red"}} exact to="/events" >{links.events}</NavItem>
+                <NavItem activeStyle={{color: "red"}} exact to="/login" >{links.login}</NavItem>
+                <NavItem activeStyle={{color: "red"}} exact to="/register" >{links.register}</NavItem>
             </Nav>
         </Inner>
         </HeaderWrapper>
