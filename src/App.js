@@ -7,7 +7,7 @@ import Event from './pages/SingleEvent/SingleEvent';
 import Footer from './components/Footer/Footer';
 import { Route } from 'react-router-dom';
 import Login from './pages/Login/Login';
-import Register from './pages/Register/Register';
+import { Register } from './pages/Register/Register';
 
 export default function App() {
   return (
@@ -19,7 +19,7 @@ export default function App() {
         <Route exact path="/event/:id" component={Event} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
-      </Main>
+      </Main> 
       <Footer/>
     </>
   );
