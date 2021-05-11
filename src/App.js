@@ -6,8 +6,9 @@ import Events from './pages/Events/Events';
 import Event from './pages/SingleEvent/SingleEvent';
 import Footer from './components/Footer/Footer';
 import { Route } from 'react-router-dom';
-import Login from './pages/Login/Login';
+import { Login } from './pages/Login/Login';
 import { Register } from './pages/Register/Register';
+import { Admin } from './pages/Admin/Admin';
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
         <Route exact path="/event/:id" component={Event} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
+        <Route exact path="/admin" component={Admin} />
       </Main> 
       <Footer/>
     </>

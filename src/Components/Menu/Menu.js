@@ -9,7 +9,8 @@ const links = {
   home: 'Home',
   events: 'Events',
   login: 'Login',
-  register: 'Register'
+  register: 'Register',
+  admin: 'Admin'
 }
 
 const Menu = ({ open }) => {
@@ -20,6 +21,7 @@ const Menu = ({ open }) => {
                 <NavItem activeStyle={{color: "red"}} exact to="/events" >{links.events}</NavItem>
                 <NavItem activeStyle={{color: "red"}} exact to="/login" >{links.login}</NavItem>
                 <NavItem activeStyle={{color: "red"}} exact to="/register" >{links.register}</NavItem>
+                <NavItem activeStyle={{color: "red"}} exact to="/admin" >{links.admin}</NavItem>
       </Nav>
             </>
     )

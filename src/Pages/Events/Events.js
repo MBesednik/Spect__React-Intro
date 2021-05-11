@@ -13,7 +13,12 @@ import eventsMock from '../../lib/mock/events';
 
 const Events = () => {
 
-    const style = { position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)" };
+    const style = { 
+      position: "fixed",
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%, -50%)"
+    };
     const [events, setEvents] = useState(null);
     const [filtered, setFiltered] = useState(null);
 

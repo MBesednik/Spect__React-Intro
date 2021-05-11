@@ -9,9 +9,11 @@ export const colors = {
     yellow: '#e4b43c',
     white: '#ffffff',
     black: '#000000',
+    green: '#008000',
     darkGrey: '#333333',
     lightGrey: '#d0d0d0',
-    blackOverlay: 'rgba(0, 0, 0, 0.7)'
+    blackOverlay: 'rgba(0, 0, 0, 0.7)',
+    hoverLightGray: '#ededed'
 };
 export const boxShadow = '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)';
 export const boxShadowHover = '0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)';
