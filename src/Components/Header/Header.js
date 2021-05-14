@@ -21,8 +21,9 @@ const links = {
 }
 
 
-const Header = () => {
+const Header = (props) => {
     const [open, setOpen] = useState(false);
+    const [ visible, setVisible ] = useState(false);
     return (
 <HeaderWrapper>
         <Inner>
@@ -31,12 +32,36 @@ const Header = () => {
                 </LogoContainer>
                     <Burger open={open} setOpen={setOpen} />
                     <Menu open={open} setOpen={setOpen} />
-            <Nav>
-                <NavItem activeStyle={{color: "red"}} exact to="/" >{links.home}</NavItem>
-                <NavItem activeStyle={{color: "red"}} exact to="/events" >{links.events}</NavItem>
-                <NavItem activeStyle={{color: "red"}} exact to="/login" >{links.login}</NavItem>
-                <NavItem activeStyle={{color: "red"}} exact to="/register" >{links.register}</NavItem>
-                <NavItem activeStyle={{color: "red"}} exact to="/admin" >{links.admin}</NavItem>
+            <Nav visible={visible.toString()}>
+                <NavItem activeStyle={{color: "red"}} exact to="/" >
+                    {links.home}
+                </NavItem>
+                <NavItem activeStyle={{color: "red"}} exact to="/events" >
+                    {links.events}
+                </NavItem>
+                {props.isLoggedIn
+                ? <NavItem to='/login' onClick={() => props.logout()}>Logout</NavItem>
+                : 
+                <NavItem activeStyle={{color: "red"}} exact to="/login" >
+                    {links.login}
+                </NavItem>
+                }
+                {!props.isLoggedIn && <NavItem
+                                            exact to="/register"
+                                            activeStyle={{color: "red"}}
+                                            onClick={() => setVisible(false)}
+                                        >
+                                            {links.register}
+                                        </NavItem>
+                                        }
+                {props.isAdmin && <NavItem
+                                        exact to="/admin"
+                                        activeStyle={{color: "red"}}
+                                        onClick={() => setVisible(false)}
+                                    >
+                                        Admin
+                                    </NavItem>
+                                    }
             </Nav>
         </Inner>
         </HeaderWrapper>
