@@ -13,14 +13,22 @@ import {
     InputText,
     InputError,
     InputCheckbox,
-    CheckboxWrapper
+    CheckboxWrapper,
+    SuccessMessage
 } from '../../lib/style/generalStyles';
 import { Button } from '../../lib/style/generalStyles';
+import { registerUser } from '../../api/register';
+import { loginUser } from '../../api/login';
+import { getAllUsers } from '../../api/user';
 
-export const Register = () => {
+export const Register = ({login}) => {
 
     const style = {textAlign: 'center'};
+
     const [isLoading, setIsLoading] = useState(false);
+    const [isError, setIsError] = useState(false);
+    const [successMessage, setSuccessMessage] = useState('');
+    const [isRequestFinished, setIsRequestFinished] = useState(false);
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -50,13 +58,43 @@ export const Register = () => {
                     }
                 )
         }),
-        onSubmit: values => {
+       onSubmit: (values, { resetForm }) => {
             setIsLoading(true);
+            setIsRequestFinished(false);
+            setIsError(false);
 
-            setTimeout(() => {
+            const user = {
+                email: values.email,
+                password: values.password,
+                firstName: values.firstName,
+                lastName: values.lastName,
+                isAdmin: values.isAdmin
+            }
+
+            registerUser(user).then(result => {
+                resetForm({});
+                setIsError(false);
+                setSuccessMessage('You\'ve registered, welcome!');
+                setTimeout(() => {
+                    setIsRequestFinished(false);
+                }, 4000)
+            })
+            .then(async () => {
+                const response = await loginUser({
+                    email: user.email,
+                    password: user.password
+                });
+                const users = await getAllUsers(response.token);
+                const isAdmin = users.find(u => u.email === values.email).isAdmin;
+                login(response.token, isAdmin);
+            })           
+            .catch(error => {
+                setIsError(true);
+                setSuccessMessage('Something went wrong.');
+            }).finally(() => {
                 setIsLoading(false);
-                alert(JSON.stringify(values));
-            }, 1000);
+                setIsRequestFinished(true);
+            })
         }
     });
 
@@ -64,6 +102,9 @@ export const Register = () => {
         <>
             <Title>Register</Title>
             <Section withoutTopPadding={true}>
+                {isRequestFinished &&
+                    <SuccessMessage isError={isError}>{successMessage}</SuccessMessage>
+                }
                 {!isLoading
                     ? <Form onSubmit={formik.handleSubmit}>
                         <FormRow>
