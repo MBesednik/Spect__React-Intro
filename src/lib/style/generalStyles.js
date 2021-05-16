@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
+import { Route, Redirect } from 'react-router-dom';
 
 import {
     colors,
@@ -234,3 +235,21 @@ export const SuccessMessage = styled.p`
         max-width: 400px;
     }
 `;
+
+// secure route
+export const SecureRoute = (
+    {
+    component: Component,
+    isAdmin,
+    isLoggedIn,
+    role,
+    to,
+    location,
+    ...rest
+}
+) => <Route location={location}
+        render={props => (role === 'isAdmin' && isAdmin) || (role === 'isLoggedIn' && isLoggedIn)
+            ? <Component {...rest}/>
+            : <Redirect to={{ pathname: '/', state: { from: props.location } }} />
+        }
+    />;

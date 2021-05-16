@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import LogoImg from '../../assets/images/logo.png';
 import {
     HeaderWrapper,
@@ -20,10 +20,10 @@ const links = {
     admin: 'Admin'
 }
 
-
 const Header = (props) => {
-    const [open, setOpen] = useState(false);
+    const [ open, setOpen ] = useState(false);
     const [ visible, setVisible ] = useState(false);
+
     return (
 <HeaderWrapper>
         <Inner>
@@ -31,7 +31,7 @@ const Header = (props) => {
                 <Logo src={LogoImg} alt="Logo"/>
                 </LogoContainer>
                     <Burger open={open} setOpen={setOpen} />
-                    <Menu open={open} setOpen={setOpen} />
+                    <Menu open={open} setOpen={setOpen}  />
             <Nav visible={visible.toString()}>
                 <NavItem activeStyle={{color: "red"}} exact to="/" >
                     {links.home}

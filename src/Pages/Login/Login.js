@@ -57,6 +57,7 @@ export const Login = ({login}) => {
                 setSuccessMessage('You\'ve logged in, welcome!');
                 setTimeout(() => {
                     login(response.token, isAdmin);
+                    setIsRequestFinished(false);
                 }, 4000);
 
             } catch (error) {
