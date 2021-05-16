@@ -3,7 +3,7 @@ import {
     Nav,
     NavItem
 } from './MenuStyle';
-import { bool } from 'prop-types';
+import { bool, func } from 'prop-types';
 
 const links = {
   home: 'Home',
@@ -13,55 +13,36 @@ const links = {
   admin: 'Admin'
 }
 
-const Menu = ({ open }) => {
-
-      const [ isAdmin, setIsAdmin ] = useState(false);
-      const [ isLoggedIn, setIsLoggedIn ] = useState(false);
-
-    useEffect(() => {
-        setIsLoggedIn(localStorage.getItem('authToken') ? true : false);
-        setIsAdmin(JSON.parse(localStorage.getItem('isAdmin')));
-    }, []);
-
-    function login(authToken, isAdmin) {
-        localStorage.setItem('authToken', authToken);
-        localStorage.setItem('isAdmin', isAdmin);
-        setIsLoggedIn(true);
-        setIsAdmin(isAdmin);
-    }
-
-    function logout() {
-        localStorage.removeItem('authToken');
-        localStorage.removeItem('isAdmin');
-        setIsLoggedIn(false);
-        setIsAdmin(false);
-    }
+const Menu = ( props ) => {
+      
     return (
         <>
-      <Nav  open={open} >
-                <NavItem activeStyle={{color: "red"}} exact to="/" >
+      <Nav  open={props.open} >
+               <NavItem activeStyle={{color: "red"}} exact to="/" onClick={() => props.setOpen(!props.open)}  >
                     {links.home}
                 </NavItem>
-                <NavItem activeStyle={{color: "red"}} exact to="/events" >
+                <NavItem activeStyle={{color: "red"}} exact to="/events" onClick={() => props.setOpen(!props.open)} >
                     {links.events}
                 </NavItem>
-                {isLoggedIn
-                ? <NavItem to='/login' onClick={() => logout()}>Logout</NavItem>
+                {props.isLoggedIn
+                ? <NavItem to='/login' onClick={() => {props.logout(); props.setOpen(!props.open);}}>Logout</NavItem>
                 : 
-                <NavItem activeStyle={{color: "red"}}  login={login} exact to="/login" >
+                <NavItem activeStyle={{color: "red"}} exact to="/login" onClick={() => props.setOpen(!props.open)} >
                     {links.login}
                 </NavItem>
                 }
-                {!isLoggedIn && <NavItem
+                {!props.isLoggedIn && <NavItem
                                             exact to="/register"
                                             activeStyle={{color: "red"}}
+                                            onClick={() => props.setOpen(!props.open)} 
                                         >
                                             {links.register}
                                         </NavItem>
                                         }
-                {isAdmin && <NavItem
+                {props.isAdmin && <NavItem
                                         exact to="/admin"
                                         activeStyle={{color: "red"}}
+                                        onClick={() => props.setOpen(!props.open)} 
                                     >
                                         Admin
                                     </NavItem>
@@ -72,5 +53,6 @@ const Menu = ({ open }) => {
   }
     Menu.propTypes = {
     open: bool.isRequired,
+    setOpen: func.isRequired
   }
 export default Menu;

@@ -14,7 +14,7 @@ import { SecureRoute } from '../src/lib/style/generalStyles';
 
 export default function App() {
 
-  const [ isAdmin, setIsAdmin ] = useState(false);
+  const [ isAdmin, setIsAdmin ] = useState(true);
   const [ isLoggedIn, setIsLoggedIn ] = useState(false);
 
   useEffect(() => {

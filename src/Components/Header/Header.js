@@ -20,9 +20,8 @@ const links = {
     admin: 'Admin'
 }
 
-const Header = (props) => {
+const Header = ( props ) => {
     const [ open, setOpen ] = useState(false);
-    const [ visible, setVisible ] = useState(false);
 
     return (
 <HeaderWrapper>
@@ -31,9 +30,9 @@ const Header = (props) => {
                 <Logo src={LogoImg} alt="Logo"/>
                 </LogoContainer>
                     <Burger open={open} setOpen={setOpen} />
-                    <Menu open={open} setOpen={setOpen}  />
-            <Nav visible={visible.toString()}>
-                <NavItem activeStyle={{color: "red"}} exact to="/" >
+                    <Menu open={open} setOpen={setOpen} logout={props.logout} isAdmin={props.isAdmin} isLoggedIn={props.isLoggedIn}/>
+            <Nav>
+                <NavItem activeStyle={{color: "red"}} exact to="/" > 
                     {links.home}
                 </NavItem>
                 <NavItem activeStyle={{color: "red"}} exact to="/events" >
@@ -49,7 +48,6 @@ const Header = (props) => {
                 {!props.isLoggedIn && <NavItem
                                             exact to="/register"
                                             activeStyle={{color: "red"}}
-                                            onClick={() => setVisible(false)}
                                         >
                                             {links.register}
                                         </NavItem>
@@ -57,7 +55,6 @@ const Header = (props) => {
                 {props.isAdmin && <NavItem
                                         exact to="/admin"
                                         activeStyle={{color: "red"}}
-                                        onClick={() => setVisible(false)}
                                     >
                                         Admin
                                     </NavItem>
