@@ -8,6 +8,7 @@ import {
 
 export const Message = styled.p`
     text-align: center;
+    padding-top: 50px;
 `;
 
 export const AddEventButton = styled.button`
