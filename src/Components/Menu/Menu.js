@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { 
     Nav,
     NavItem
 } from './MenuStyle';
 import { bool, func } from 'prop-types';
+import { AuthContext } from '../../context/AuthContext';
 
 const links = {
   home: 'Home',
@@ -15,6 +16,8 @@ const links = {
 
 const Menu = ( props ) => {
       
+    const { isLoggedIn, isAdmin, logout } = useContext(AuthContext);
+
     return (
         <>
       <Nav  open={props.open} >
@@ -24,14 +27,14 @@ const Menu = ( props ) => {
                 <NavItem activeStyle={{color: "red"}} exact to="/events" onClick={() => props.setOpen(!props.open)} >
                     {links.events}
                 </NavItem>
-                {props.isLoggedIn
-                ? <NavItem to='/login' onClick={() => {props.logout(); props.setOpen(!props.open);}}>Logout</NavItem>
+                {isLoggedIn
+                ? <NavItem to='/login' onClick={() => {logout(); props.setOpen(!props.open);}}>Logout</NavItem>
                 : 
                 <NavItem activeStyle={{color: "red"}} exact to="/login" onClick={() => props.setOpen(!props.open)} >
                     {links.login}
                 </NavItem>
                 }
-                {!props.isLoggedIn && <NavItem
+                {!isLoggedIn && <NavItem
                                             exact to="/register"
                                             activeStyle={{color: "red"}}
                                             onClick={() => props.setOpen(!props.open)} 
@@ -39,7 +42,7 @@ const Menu = ( props ) => {
                                             {links.register}
                                         </NavItem>
                                         }
-                {props.isAdmin && <NavItem
+                {isAdmin && <NavItem
                                         exact to="/admin"
                                         activeStyle={{color: "red"}}
                                         onClick={() => props.setOpen(!props.open)} 

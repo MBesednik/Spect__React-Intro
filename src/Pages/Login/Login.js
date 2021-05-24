@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { 
@@ -15,8 +15,9 @@ import { Button } from '../../lib/style/generalStyles';
 import Loader from "react-loader-spinner";
 import { loginUser } from '../../api/login';
 import { getAllUsers } from '../../api/user';
+import { AuthContext } from '../../context/AuthContext';
 
-export const Login = ({login}) => {
+export const Login = () => {
 
     const style = {textAlign: 'center'};
 
@@ -24,6 +25,8 @@ export const Login = ({login}) => {
     const [isError, setIsError] = useState(false);
     const [successMessage, setSuccessMessage] = useState('');
     const [isRequestFinished, setIsRequestFinished] = useState(false);
+
+     const { login } = useContext(AuthContext);
 
     const formik = useFormik({
         initialValues: {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import LogoImg from '../../assets/images/logo.png';
 import {
     HeaderWrapper,
@@ -10,6 +10,7 @@ import {
 } from "./HeaderStyle";
 import Burger from '../Burger/Burger';
 import Menu from '../Menu/Menu';
+import { AuthContext } from '../../context/AuthContext';
 
 
 const links = {
@@ -22,6 +23,7 @@ const links = {
 
 const Header = ( props ) => {
     const [ open, setOpen ] = useState(false);
+    const { isLoggedIn, isAdmin, logout } = useContext(AuthContext);
 
     return (
 <HeaderWrapper>
@@ -30,7 +32,7 @@ const Header = ( props ) => {
                 <Logo src={LogoImg} alt="Logo"/>
                 </LogoContainer>
                     <Burger open={open} setOpen={setOpen} />
-                    <Menu open={open} setOpen={setOpen} logout={props.logout} isAdmin={props.isAdmin} isLoggedIn={props.isLoggedIn}/>
+                    <Menu open={open} setOpen={setOpen} />
             <Nav>
                 <NavItem activeStyle={{color: "red"}} exact to="/" > 
                     {links.home}
@@ -38,21 +40,21 @@ const Header = ( props ) => {
                 <NavItem activeStyle={{color: "red"}} exact to="/events" >
                     {links.events}
                 </NavItem>
-                {props.isLoggedIn
-                ? <NavItem to='/login' onClick={() => props.logout()}>Logout</NavItem>
+                {isLoggedIn
+                ? <NavItem to='/login' onClick={() => logout()}>Logout</NavItem>
                 : 
                 <NavItem activeStyle={{color: "red"}} exact to="/login" >
                     {links.login}
                 </NavItem>
                 }
-                {!props.isLoggedIn && <NavItem
+                {!isLoggedIn && <NavItem
                                             exact to="/register"
                                             activeStyle={{color: "red"}}
                                         >
                                             {links.register}
                                         </NavItem>
                                         }
-                {props.isAdmin && <NavItem
+                {isAdmin && <NavItem
                                         exact to="/admin"
                                         activeStyle={{color: "red"}}
                                     >

@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 import { Route, Redirect } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
 
 import {
     colors,
@@ -239,17 +240,18 @@ export const SuccessMessage = styled.p`
 // secure route
 export const SecureRoute = (
     {
-    component: Component,
-    isAdmin,
-    isLoggedIn,
+  component: Component,
     role,
     to,
     location,
     ...rest
-}
-) => <Route location={location}
-        render={props => (role === 'isAdmin' && isAdmin) || (role === 'isLoggedIn' && isLoggedIn)
-            ? <Component {...rest}/>
+}) => {
+    const { isLoggedIn, isAdmin } = useContext(AuthContext)
+
+    return <Route location={location}
+        render={props => (role === 'isAdmin' && isAdmin) || (role === 'isLoggedIn' && isLoggedIn) || (role === 'isAnonymous' && !isLoggedIn)
+            ? <Component {...rest} />
             : <Redirect to={{ pathname: '/', state: { from: props.location } }} />
         }
     />;
+}
